@@ -1,0 +1,108 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "react-app",
+    "react-app/jest",
+    "prettier"
+  ],
+  "plugins": [
+    "react",
+    "simple-import-sort"
+  ],
+  "rules": {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off",
+    "no-unused-vars": [
+      "warn",
+      {
+        "vars": "local",
+        "args": "none",
+        "ignoreRestSiblings": true,
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "@next/next/no-html-link-for-pages": "off",
+    "@typescript-eslint/no-unused-vars": "off" // already enabled in eslint
+  },
+  "overrides": [
+    // override "simple-import-sort" config
+    {
+      "files": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx"
+      ],
+      "rules": {
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              // Packages `react` related packages come first.
+              [
+                "^react",
+                "^next"
+              ],
+              [
+                "^@?\\w"
+              ],
+              // Internal packages.
+              [
+                "^(@/src)(/.*|$)",
+                "^(@/store)(/.*|$)",
+                "^(@/services)(/.*|$)",
+                "^(@/hooks)(/.*|$)",
+                "^(@/hocs)(/.*|$)",
+                "^(@/libs)(/.*|$)",
+                "^(@/utils)(/.*|$)",
+                "^(@/layouts)(/.*|$)",
+                "^(@/pages)(/.*|$)",
+                "^(@/containers)(/.*|$)",
+                "^(@/features)(/.*|$)",
+                "^(@/ui)(/.*|$)",
+                "^(@/components)(/.*|$)"
+              ],
+              // Side effect imports.
+              [
+                "^\\u0000"
+              ],
+              // Other relative imports. Put same-folder imports and `.` last.
+              [
+                "^\\./(?=.*/)(?!/?$)",
+                "^\\.(?!/?$)",
+                "^\\./?$"
+              ],
+              // Types imports.
+              [
+                "^(@/types)(/.*|$)"
+              ],
+              // Style imports.
+              [
+                "^.+\\.?(css)$"
+              ],
+              [
+                "^(@/styles)(/.scss|$)"
+              ],
+              // Assets imports.
+              [
+                "^(@/assets)(/.*|$)",
+                "^(@/images)(/.*|$)"
+              ],
+              // Parent imports. Put `..` last.
+              [
+                "^\\.\\.(?!/?$)",
+                "^\\.\\./?$"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

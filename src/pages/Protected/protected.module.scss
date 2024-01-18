@@ -1,0 +1,38 @@
+@import "src/assets/styles/variables/index";
+@import "src/assets/styles/helpers/index";
+
+.wrap {
+  padding-top: 90px;
+
+  @include sm {
+    padding-top: 45px;
+  }
+}
+
+.container {
+  max-width: 1388px;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+  color: #000000;
+}
+
+.title {
+  padding-right: 56px;
+  padding-bottom: 45px;
+  margin: 0;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 1px solid #EAEBF0;
+
+  @include lg {
+    padding-right: 0;
+  }
+
+  @include xs {
+    font-size: 44px;
+  }
+}

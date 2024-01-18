@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useLayoutEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { useLocation, useRoutes } from 'react-router-dom';
 
-function App() {
+import WithLoader from './hocs/withLoader';
+import { useUserFetching } from './hooks/useUserFetching';
+import routes from './routes';
+
+
+const App: FC = () => {
+  console.debug('App version 0.0.1');
+  const [isUserFetching] = useUserFetching();
+
+  const location = useLocation();
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo(0, 0);
+  }, [location.pathname]);
+
+
+  const elements = useRoutes(routes);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Helmet>
+        <title>XEPPT APP</title>
+      </Helmet>
+      <WithLoader isLoading={isUserFetching}>{elements}</WithLoader>
+    </>
   );
-}
+};
 
 export default App;
