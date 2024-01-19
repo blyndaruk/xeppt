@@ -3,10 +3,12 @@ import { RouteObject } from 'react-router-dom';
 
 import ProtectedRoute from './hocs/ProtectedRoute';
 import BaseLayout from './layouts/BaseLayout';
+import CardPage from './pages/CardPage';
 import Home from './pages/Home';
+import LoginPage from './pages/Login';
 import NotFound from './pages/NotFound';
-import Protected from './pages/Protected';
 import Search from './pages/Search';
+import StatementsPage from './pages/Statements';
 
 const routes: RouteObject[] = [
   {
@@ -15,8 +17,10 @@ const routes: RouteObject[] = [
     children: [
       { index: true, element: <Home /> },
       { path: '/search', element: <Search /> },
-      { path: '/protected', element: <ProtectedRoute redirectTo="/"><Protected /></ProtectedRoute> },
+      { path: '/card', element: <ProtectedRoute redirectTo="/login"><CardPage /></ProtectedRoute> },
       { path: '*', element: <NotFound /> },
+      { path: '/login', element: <LoginPage /> },
+      { path: '/statements', element: <StatementsPage /> },
     ],
   },
   /* To show example of protected routes with different layout */
@@ -37,10 +41,10 @@ const routes: RouteObject[] = [
   //   path: '/sign-up',
   //   element: <SignUp />,
   // },
-  // {
-  //   path: '/login',
-  //   element: <Login />,
-  // },
+  {
+    path: '/login',
+    element: <LoginPage />,
+  },
 ];
 
 export default routes;

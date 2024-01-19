@@ -4,16 +4,9 @@ img {
 }
 
 .container {
-  max-width: 1345px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 36px;
-  padding-right: 8px;
-
-  @include lg {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .out {

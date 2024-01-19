@@ -1,19 +1,19 @@
 import React, { FC } from 'react';
 
-import styles from './protected.module.scss';
+import styles from './card-page.module.scss';
 
 
-const Protected: FC = () => {
+const CardPage: FC = () => {
 
   return (
     <div className={styles.wrap}>
       <div className={styles.container}>
         <h1 className={styles.title}>
-          Protected
+          Card Single Page
         </h1>
       </div>
     </div>
   );
 };
 
-export default Protected;
+export default CardPage;

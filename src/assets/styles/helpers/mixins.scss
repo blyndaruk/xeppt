@@ -73,7 +73,7 @@
   }
 }
 
-@mixin line-height($heightValue: 20 ){
+@mixin line-height($heightValue: 20 ) {
   line-height: $heightValue + px; //fallback for old browsers
   line-height: (0.0625 * $heightValue);
 }
@@ -98,9 +98,37 @@
   text-overflow: ellipsis;
 }
 
+@mixin glass-hover-animation {
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-150%) skew(45deg);
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
+    opacity: 0.45;
+    transition: all 0.45s ease-out;
+    pointer-events: none;
+  }
+
+  &:hover {
+    &:before {
+      transform: translate(200%) skew(45deg);
+    }
+  }
+}
 
 
 @mixin ff-default {
-  font-family: "SF Pro Display", Helvetica, Arial, sans-serif;
+  font-family: "Poppins", Helvetica, Arial, sans-serif;
+}
+
+@mixin ff-bold {
+  font-weight: bold;
 }
 
